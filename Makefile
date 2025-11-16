@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c17 -Wall -Wextra -Icore/include -Icore/components/include -Iplugins/file_logger/include -Iplugins/stdout_logger/include
+CFLAGS = -std=c17 -O0 -Wall -Wextra -Icore/include -Icore/components/include -Iplugins/file_logger/include -Iplugins/stdout_logger/include
 
 SRC = app/main.c \
       core/components/src/worker.c \
@@ -15,10 +15,10 @@ all: $(DEMO)
 $(DEMO): $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 
-worker.o: components/src/worker.c
+worker.o: core/components/src/worker.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(DEMO) log.txt
+	rm -f $(OBJ) $(DEMO) log.txt worker.o
 
 .PHONY: all clean
