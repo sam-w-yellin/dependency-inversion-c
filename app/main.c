@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "../core/components/include/worker.h"
-#include "../plugins/stdout_logger/include/stdout_logger.h"
-#include "../plugins/file_logger/include/file_logger.h"
+#include "worker.h"
+#include "stdout_logger.h"
+#include "file_logger.h"
 
 int main(void)
 {
