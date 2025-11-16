@@ -5,10 +5,10 @@
 typedef struct {
     const logger_interface_t *logger;
     void *logger_instance;
-} component_t;
+} worker_t;
 
-void component_init(component_t *c,
+void worker_init(worker_t *w,
                     const logger_interface_t *logger,
                     void *logger_instance);
 
-void component_do_work(component_t *c);
+void worker_do_work(worker_t *w);
