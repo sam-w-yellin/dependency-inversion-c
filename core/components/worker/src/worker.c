@@ -5,6 +5,7 @@ void worker_init(worker_t *w,
                     const logger_interface_t *logger)
 {
     w->logger = logger;
+    w->logger->init();
 }
 
 void worker_do_work(worker_t *w)
