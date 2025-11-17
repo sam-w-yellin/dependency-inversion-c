@@ -4,11 +4,9 @@
 
 typedef struct {
     const logger_interface_t *logger;
-    void *logger_instance;
 } worker_t;
 
 void worker_init(worker_t *w,
-                    const logger_interface_t *logger,
-                    void *logger_instance);
+                const logger_interface_t *logger);
 
 void worker_do_work(worker_t *w);

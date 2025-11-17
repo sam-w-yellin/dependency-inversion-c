@@ -2,26 +2,30 @@
 #include <string.h>
 #include "file_logger.h"
 
-static void file_logger_init(
-    void *self, const char *name)
+static char* logname = "log.txt";
+
+static void file_logger_init()
 {
-    file_logger_t *logger = (file_logger_t *)self;
-
-    logger->file = fopen("log.txt", "a");
-    logger->name = name;
-}
-
-static void file_logger_log(void *self, const char *msg)
-{
-    file_logger_t *logger = (file_logger_t *)self;
-
-    if (logger->file) {
-        fprintf(logger->file, "[%s] %s\n", logger->name, msg);
-        fflush(logger->file);
+    FILE* f = fopen(logname, "w");
+    if (f != NULL) {
+        fclose(f);
     }
 }
 
-const logger_interface_t FILE_LOGGER_INTERFACE = {
-    .init = file_logger_init,
-    .log = file_logger_log
-};
+static void file_logger_log(const char* logger_name, const char *msg)
+{
+    FILE* f = fopen(logname, "a");
+    if (f != NULL) {
+        fprintf(f, "[%s] %s\n", logger_name, msg);
+        fflush(f);
+        fclose(f);
+    }
+}
+
+logger_interface_t mk_file_logger(const char* name) {
+    logger_interface_t logger;
+    logger.name = name;
+    logger.init = file_logger_init;
+    logger.log = file_logger_log;
+    return logger;
+}
