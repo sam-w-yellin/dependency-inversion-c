@@ -3,15 +3,10 @@
 #include "stdout_logger.h"
 
 static void stdout_logger_init(
-    void *self, char *buffer, size_t buffer_len, const char *name)
+    void *self, const char *name)
 {
     stdout_logger_t *logger = (stdout_logger_t *)self;
-    logger->buffer = buffer;
-    logger->buffer_len = buffer_len;
-    logger->idx = 0;
     logger->name = name;
-
-    snprintf(buffer, buffer_len, "[%s] init\n", name);
 }
 
 static void stdout_logger_log(void *self, const char *msg)

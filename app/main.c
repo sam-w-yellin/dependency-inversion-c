@@ -5,17 +5,14 @@
 
 int main(void)
 {
-    char logger_name_buffers[3][128];
-
-    const size_t name_buf_size = sizeof(logger_name_buffers[0]);
 
     stdout_logger_t stdout1;
     stdout_logger_t stdout2;
     file_logger_t file1;
 
-    STDOUT_LOGGER_INTERFACE.init(&stdout1, logger_name_buffers[0], name_buf_size, "stdout_logger_1");
-    STDOUT_LOGGER_INTERFACE.init(&stdout2, logger_name_buffers[1], name_buf_size, "stdout_logger_2");
-    FILE_LOGGER_INTERFACE.init(&file1, logger_name_buffers[2], name_buf_size, "file_logger");
+    STDOUT_LOGGER_INTERFACE.init(&stdout1, "stdout_logger_1");
+    STDOUT_LOGGER_INTERFACE.init(&stdout2, "stdout_logger_2");
+    FILE_LOGGER_INTERFACE.init(&file1, "file_logger");
 
     worker_t w1, w2, w3;
 

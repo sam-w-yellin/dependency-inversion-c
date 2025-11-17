@@ -6,9 +6,6 @@
 
 typedef struct {
     FILE *file;
-    char *buffer;
-    size_t buffer_len;
-    size_t idx;
     const char *name;
 } file_logger_t;
 

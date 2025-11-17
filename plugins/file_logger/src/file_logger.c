@@ -3,14 +3,11 @@
 #include "file_logger.h"
 
 static void file_logger_init(
-    void *self, char *buffer, size_t buffer_len, const char *name)
+    void *self, const char *name)
 {
     file_logger_t *logger = (file_logger_t *)self;
 
     logger->file = fopen("log.txt", "a");
-    logger->buffer = buffer;
-    logger->buffer_len = buffer_len;
-    logger->idx = 0;
     logger->name = name;
 }
 
