@@ -22,7 +22,8 @@ static void file_logger_log(const char* logger_name, const char *msg)
     }
 }
 
-logger_interface_t mk_file_logger(const char* name) {
+logger_interface_t mk_file_logger(const char* name) 
+{
     logger_interface_t logger;
     logger.name = name;
     logger.init = file_logger_init;

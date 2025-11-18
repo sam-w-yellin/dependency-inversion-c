@@ -2,7 +2,8 @@
 
 #include "logger_interface.h"
 
-typedef struct {
+typedef struct 
+{
     const logger_interface_t *logger;
 } worker_t;
 
